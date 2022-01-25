@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo_Helicoptero</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="background">
+        <div id="foreground" class="parallax">
+            <div id="instrucoes">
+                <h1> Resgate </h1>
+                <p>Utilize a tecla W para movimentar o helicóptero para cima, a tecla S para movimentar o helicóptero para baixo e a tecla D para atirar.</p>
+                <p> Clique aqui para iniciar!! </p>
+            </div>
+            <span id="pontuacao" class="hide"></span>
+            <div class="jogador hide jogador_idle"></div>
+            <div class="refem refem_walking"></div>
+            <div class="inimigo1 hide inimigo1_idle"></div>
+            <div id="inimigo2" class="hide"></div>
+            <div id="energias"></div>
+            <div class="canhao"></div>
+            <audio src="assets/JogosHTML5/jogo1/sons/musica.mp3" class="musica_fundo"></audio>
+            <audio src="assets/JogosHTML5/jogo1/sons/explosao.mp3" class="explosao"></audio>
+            <audio src="assets/JogosHTML5/jogo1/sons/resgate.mp3" class="resgate"></audio>
+            <audio src="assets/JogosHTML5/jogo1/sons/som.mp3" class="tiro"></audio>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

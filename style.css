@@ -1,0 +1,293 @@
+/*DOM*/
+:root{
+    --player_position_x: 0px;
+    --player_position_y: 179px;
+
+    --hostage_position_x: 50px;
+
+    --enemy1_position_x: calc(800px + 256px);
+    --enemy1_position_y: 253px;
+    
+    --enemy2_position_x: calc(800px + 165px);
+    --enemy2_position_y: 435px;
+}
+
+@font-face {
+    font-family: Title;
+    src: url(assets/JogosHTML5/jogo1/fontes/ANODETONOONE.TTF);
+}
+
+*{
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+h1{
+    font-family: Title;
+    color: violet;
+}
+
+#background{
+    width: 100vw;
+    height: 100vh;
+    background-image: url(assets/JogosHTML5/jogo1/imgs/fundo.jpg);
+    background-size: 300px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#foreground{
+    width: 800px;
+    height: 600px;
+    background-image: url(assets/JogosHTML5/jogo1/imgs/fundo_game.jpg);
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#instrucoes{
+    width: 300px;
+    background-color: azure;
+    padding: 10px;
+    border: 3px dotted green;
+    border-radius: 15px;
+
+    font-family: monospace;
+    text-align: center;
+}
+
+#instrucoes h1, #instrucoes p{
+    margin-bottom: 16px;
+}
+
+
+
+/*ATORES*/
+.jogador{
+	width: 256px;
+	height: 66px;
+	position: absolute;
+	left: var(--player_position_x);
+	top: var(--player_position_y);
+    background-image: url(assets/JogosHTML5/jogo1/imgs/apache.png);
+}
+
+.refem{
+	width: 44px;
+	height: 51px;
+	position: absolute;
+	left: var(--hostage_position_x);
+	top: 435px;
+	background-image:url(assets/JogosHTML5/jogo1/imgs/amigo.png);
+}
+
+.inimigo1{
+	width: 256px;
+	height: 66px;
+	position: absolute;
+	left: var(--enemy1_position_x);
+	top: var(--enemy1_position_y);
+	background-image:url(assets/JogosHTML5/jogo1/imgs/inimigo1.png);
+}
+
+#inimigo2{
+	width: 165px;
+	height: 70px;
+	position: absolute;
+	left: var(--enemy2_position_x);
+	top: var(--enemy2_position_y);
+	background-image: url(assets/JogosHTML5/jogo1/imgs/inimigo2.png);
+}
+
+#energias{
+    width: 140px;
+    height: 38px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-image: url(assets/JogosHTML5/jogo1/imgs/energia3.png);
+}
+
+#pontuacao{
+    font-family: monospace, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px;
+    background-color: darkgray;
+    border: 6px groove gray;
+
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+.canhao{
+    width: 38px;
+    height: 38px;
+    background-color: green;
+    border: 6px groove gray;
+
+    position: absolute;
+    top: 0px;
+    left: 150px;
+}
+
+.recarregando{
+    animation: recarregando 1000ms steps(1) infinite;
+}
+
+
+
+/*ANIMACOES*/
+.parallax{
+    animation: parallax 10s linear infinite;
+}
+@keyframes parallax{
+    0%{
+        background-position: 0px;
+    }
+
+    100%{
+    background-position: -2200px;
+    }
+}
+
+.jogador_idle{
+    animation: jogador_idle 500ms steps(2) infinite;
+}
+@keyframes jogador_idle{
+    0%{
+        background-position: 0px;
+    }
+
+    100%{
+        background-position: -512px;
+    }
+}
+
+.refem_walking{
+    animation: refem_walking 1000ms steps(12) infinite;
+}
+@keyframes refem_walking{
+    0%{
+        background-position: 528px;
+    }
+    100%{
+        background-position: 0px;
+    }
+}
+
+.inimigo1_idle{
+    animation: inimigo1_idle 500ms steps(2) infinite;
+}
+@keyframes inimigo1_idle{
+    0%{
+        background-position: 0px;
+    }
+
+    100%{
+        background-position: -512px;
+    }
+}
+
+.inimigo2_idle{
+    animation: inimigo2_idle 500ms steps(2) infinite;
+}
+@keyframes inimigo2_idle{
+    0%{
+        background-position: 0px;
+    }
+
+    100%{
+        background-position: -512px;
+    }
+}
+
+@keyframes shot{
+    0%{
+        transform: translateY(-5px);
+    }
+    100%{
+        transform: translateY(5px);
+    }
+}
+
+@keyframes destroyed{
+    0%{
+        transform: scale(25%);
+        opacity: 100%;
+    }
+    100%{
+        transform: scale(150%);
+        opacity: 0%;
+    }
+}
+
+@keyframes recarregando{
+    0%{
+        background-color: yellow;
+    }
+
+    50%{
+        background-color: red;
+    }
+    
+    100%{
+        background-color: yellow;
+    }
+}
+
+@keyframes dead{
+    0%{
+        background-position: 308px;
+    }
+    100%{
+        background-position: 0px;
+    }
+}
+
+@keyframes rescued{
+    0%{
+        opacity: 100%;
+    }
+    100%{
+        opacity: 0%;
+    }
+}
+
+/*CLASSES*/
+.hide{
+    display: none !important;
+}
+
+.shoot{
+    position: absolute;
+    top: calc(var(--player_position_y) + 40px);
+    left: calc(var(--player_position_x) + 180px);
+    width: 50px;
+    height: 8px;
+    background-image: url(assets/JogosHTML5/jogo1/imgs/disparo.png);
+    animation: shot 150ms alternate infinite;
+}
+
+.destroyed{
+    width: 225px;
+    height: 87px;
+    background-image: url(assets/JogosHTML5/jogo1/imgs/explosao.png);
+    animation: destroyed 1500ms forwards;
+}
+
+.dead{
+    background-image: url(assets/JogosHTML5/jogo1/imgs/amigo_morte.png);
+    animation: dead 500ms steps(7) infinite;
+}
+
+.rescued{
+    animation: rescued 2000ms forwards;
+}
