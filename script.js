@@ -16,6 +16,7 @@ canhao = document.querySelector(".canhao");
 musica_fundo = document.querySelector(".musica_fundo");
 explosao = document.querySelector(".explosao");
 resgate = document.querySelector(".resgate");
+morte = document.querySelector(".morte");
 tiro = document.querySelector(".tiro");
 
 document.addEventListener("keydown", function(){player.input(event.keyCode)})
@@ -151,6 +152,7 @@ hostage = {
             (this.positionX + 44 > enemy2.positionX && this.positionX < enemy2.positionX + 165)
         ){
             refem.classList.add("dead");
+            morte.play();
         }
         else if(
             (refem.classList.contains("dead") == false) &&
@@ -303,7 +305,7 @@ function gameLoop(){
 function start(){
     let toggle_array = document.querySelectorAll(".hide");
     toggleHideClass(toggle_array);
-    //musica_fundo.loop = true;
+    musica_fundo.loop = true;
     musica_fundo.play();
     gameLoop();
 }
@@ -311,6 +313,7 @@ function start(){
 function endGame(){
     //clearInterval(loop);
     jogador.classList.add("destroyed");
+    explosao.play();
     delete player.input;
     document.removeEventListener("keydown", function(){player.input(event.keyCode)});
 
